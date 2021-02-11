@@ -5,7 +5,9 @@ This project caches the tweets of a user. Retrival is done through an API gatewa
 When caching the tweets to S3, the Lambda is smart enough to know what Tweets it
 has previously cached.
 
-When retrieving, the Lambda simply returns the latest 5 tweets
+When retrieving, the Lambda simply returns the latest 5 tweets. This project was
+created to help me learn VueJS. See the project
+**[display-cache-website](https://github.com/alexhnguyen/display-cache-website)**.
 
 ## Caching
 

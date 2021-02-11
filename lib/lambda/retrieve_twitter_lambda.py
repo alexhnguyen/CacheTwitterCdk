@@ -38,7 +38,7 @@ def handler(event, context):
                 "Access-Control-Allow-Headers" : "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
                 "Access-Control-Allow-Methods" : "OPTIONS,POST",
                 "Access-Control-Allow-Credentials" : True,
-                "Access-Control-Allow-Origin" : "http://localhost:3000",
+                "Access-Control-Allow-Origin" : "http://localhost:8080",
                 "X-Requested-With" : "*"
             },
             "body": str(json_outputs)

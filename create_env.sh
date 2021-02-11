@@ -10,3 +10,8 @@ pip install requests==2.25.1
 pip install urllib3==1.26.2
 pip install boto3==1.17.4
 pip install tweepy
+
+cd twitterVenv/lib/python3.7
+
+cp -r site-packages python
+zip -r python.zip  python/

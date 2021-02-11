@@ -21,7 +21,7 @@ export class CacheTwitterCdkStack extends cdk.Stack {
       allowCredentials: true,
       allowMethods: ["POST", "OPTIONS"],
       statusCode: 200,
-      allowOrigins: ["http://localhost:3000"],
+      allowOrigins: ["http://localhost:8080"],
     };
 
     const bucketName = "alngyn-twitter-archive";
@@ -33,7 +33,7 @@ export class CacheTwitterCdkStack extends cdk.Stack {
     });
 
     const twitterPythonLayer = new lambda.LayerVersion(this, "LambdaLayer", {
-      code: new lambda.AssetCode("lib/twitterVenv"),
+      code: new lambda.AssetCode("lib/twitterVenv/lib/python3.7/python.zip"),
       compatibleRuntimes: [lambda.Runtime.PYTHON_3_8],
     });
 
@@ -51,6 +51,10 @@ export class CacheTwitterCdkStack extends cdk.Stack {
         ACCESS_TOKEN_SECRET: "",
       },
     });
+    if (!twitterCacheLambda.role) {
+      throw new Error("This should not happen. Exiting.");
+    }
+    twitterArchiveBucket.grantPut(twitterCacheLambda.role);
 
     const twitterGetLambda = new lambda.Function(this, "TwitterGetLambda", {
       code: new lambda.AssetCode("lib/lambda"),
